@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(classes = {
     CustomerBuyingFlowIntegrationTests.CustomerBuyingFlowIntegrationTestConfiguration.class
-})
+}, properties = ModularMonolithsApplication.PROPS_CONFIG_NAME)
 class CustomerBuyingFlowIntegrationTests {
 
     @Autowired Catalogs catalogs;
