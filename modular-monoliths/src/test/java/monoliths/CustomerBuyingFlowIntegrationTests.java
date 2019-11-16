@@ -1,5 +1,6 @@
 package monoliths;
 
+import monoliths.catalogs.CatalogContextConfiguration;
 import monoliths.catalogs.CatalogFixtures;
 import monoliths.catalogs.domain.entity.CategoryRepository;
 import monoliths.catalogs.domain.entity.Product;
@@ -11,10 +12,12 @@ import monoliths.commons.model.DeliveryLocation;
 import monoliths.commons.model.DeliveryMethod;
 import monoliths.commons.model.OrderSheet;
 import monoliths.commons.model.OrderSheet.OrderSheetItem;
+import monoliths.orders.OrderContextConfiguration;
 import monoliths.orders.domain.entity.Order;
 import monoliths.orders.domain.entity.OrderStatus;
 import monoliths.orders.domain.usecase.OrderProcessing;
 import monoliths.orders.domain.usecase.Orders;
+import monoliths.shipments.ShipmentContextConfiguration;
 import monoliths.shipments.domain.entity.Delivery;
 import monoliths.shipments.domain.entity.DeliveryStatus;
 import monoliths.shipments.domain.usecase.Deliveries;
@@ -78,7 +81,7 @@ class CustomerBuyingFlowIntegrationTests {
     }
 
     @Configuration
-    @Import(ModularMonolithsApplication.class)
+    @Import({ CatalogContextConfiguration.class, OrderContextConfiguration.class, ShipmentContextConfiguration.class })
     static class CustomerBuyingFlowIntegrationTestConfiguration {
 
         @Bean
